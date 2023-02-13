@@ -11,11 +11,11 @@
     <%
       const breadcrumb = [
         {
-          href: '/',
+          href: '/dynamo/',
           text: 'Tables',
         },
         {
-          href: `/tables/${TableName}`,
+          href: `/dynamo/tables/${TableName}`,
           text: Table.TableName,
           badge: Table.ItemCount,
         },
@@ -92,7 +92,7 @@
           method: 'delete'
         }).then((response) => {
           if (response.ok) {
-            window.location = `/tables/<%= TableName %>`
+            window.location = `/dynamo/tables/<%= TableName %>`
           }
         }).catch((error) => {
           console.error(error)

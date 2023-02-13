@@ -13,7 +13,7 @@
       const breadcrumb = [
         {
           active: true,
-          href: '/',
+          href: '/dynamo/',
           text: 'Tables',
         },
       ]
@@ -46,7 +46,7 @@
         return
       }
 
-      fetch(`/tables/${TableName}`, {
+      fetch(`/dynamo/tables/${TableName}`, {
         method: 'delete'
       })
         .then((response) => {
@@ -65,7 +65,7 @@
         return
       }
 
-      fetch(`/tables/${TableName}/all`, {
+      fetch(`/dynamo/tables/${TableName}/all`, {
         method: 'delete'
       }).then((response) => {
         if (!response.ok) {
@@ -81,7 +81,7 @@
         if (!confirm('Are you sure you want to purge all tables?')) {
           return
         }
-        fetch('/tables-purge', {
+        fetch('/dynamo/tables-purge', {
           method: 'delete'
         }).then((response) => {
           if (!response.ok) {
@@ -100,7 +100,7 @@
         if (!confirm('Are you sure you want to delete all tables?')) {
           return
         }
-        fetch('/tables', {
+        fetch('/dynamo/tables', {
           method: 'delete'
         }).then((response) => {
           if (!response.ok) {
@@ -124,7 +124,7 @@
     <ul class="list-group" id="table-list">
       <% for(var i = 0; i < data.length; i++) { %>
         <li class="list-group-item" data-table-name="<%= data[i].TableName %>">
-          <a href='/tables/<%= data[i].TableName %>'>
+          <a href='/dynamo/tables/<%= data[i].TableName %>'>
             <%= data[i].TableName %>
           </a>
           <a href="#" onClick="deleteTable('<%= data[i].TableName %>'); return false"
@@ -142,7 +142,7 @@
       <% } %>
     </ul>
     <div style="margin-top: 12px; display: flex; justify-content: space-between;">
-      <a href='/create-table' class="btn btn-primary">
+      <a href='/dynamo/create-table' class="btn btn-primary">
         Create table
       </a>
       <div>
